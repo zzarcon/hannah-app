@@ -21,7 +21,7 @@ export default {
 
     application.deferReadiness();
 
-    Ember.$.get('http://localhost:3000/api/session').then(function(response) {
+    Ember.$.get('http://media-gram.herokuapp.com/api/session').then(function(response) {
 
       if (response.user) {
         var user = Ember.merge(response.user, {

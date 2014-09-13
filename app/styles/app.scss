@@ -1,0 +1,23 @@
+@import "utils/mixins";
+
+@import "sections";
+
+body{
+  padding-top: 70px;
+}
+
+#profile-info{
+  text-transform: capitalize;
+
+  img{
+    @include square(50px);
+  }
+}
+
+#app-logo{
+  padding: 11px 15px;
+
+  img{
+    width: 100px;
+  }
+}

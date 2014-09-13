@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>Available actions</h1>
+  <p class="lead">
+    Mediagram is a marketing software that helps companies to attract visitors, convert leads in close customers, and search for target users in Instagram.
+    Traditional marketing is death.
+  </p>
+</div>
+<div class="input-group">
+  {{input type="text" class="form-control" placeholder="Hastahg, usernames, etc..." value=targetValue}}
+  <div class="input-group-btn">
+    <button id="selected-action" type="button" class="btn btn-default" tabindex="-1">
+      {{selectedAction.text}}
+    </button>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+      {{#each item in availableActions}}
+        <li>
+          <a {{action "changeSelectedAction" item}}>{{item.text}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+<button id="perform-action" type="button" class="btn btn-primary btn-lg btn-block" {{action "createCampaign"}}>
+  Perform action
+</button>

@@ -8,21 +8,21 @@ export default {
   name: 'session',
   after: 'store',
 
-  initialize: function(container, application) {
-    application.register('session:main', Session, {singleton: true});
+  initialize: function(container, app) {
+    app.register('session:main', Session, {singleton: true});
 
     var store = container.lookup('store:main');
     var session = container.lookup('session:main');
+    var sessionUri = MediaGramENV.host + '/api/session';
 
-    application.inject('controller', 'session', 'session:main');
-    application.inject('route', 'session', 'session:main');
-    application.inject('router', 'session', 'session:main');
-    application.inject('view', 'session', 'session:main');
+    app.inject('controller', 'session', 'session:main');
+    app.inject('route', 'session', 'session:main');
+    app.inject('router', 'session', 'session:main');
+    app.inject('view', 'session', 'session:main');
 
-    application.deferReadiness();
+    app.deferReadiness();
 
-    Ember.$.get('http://media-gram.herokuapp.com/api/session').then(function(response) {
-
+    Ember.$.get(sessionUri).then(function(response) {
       if (response.user) {
         var user = Ember.merge(response.user, {
           fullName: response.user.user_name,
@@ -32,7 +32,9 @@ export default {
         session.set('user', store.createRecord('user', user));
       }
 
-      application.advanceReadiness();
+      app.advanceReadiness();
+    }).fail(function() {
+      app.advanceReadiness();
     });
   }
 };

@@ -19,19 +19,11 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // LOG_MODULE_RESOLVER is needed for pre-1.6.0
-    // ENV.LOG_MODULE_RESOLVER = true;
-
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_MODULE_RESOLVER = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.host = 'http://localhost:3000';
   }
 
   if (environment === 'production') {
-
+    ENV.host = 'http://media-gram.herokuapp.com';
   }
 
   return ENV;

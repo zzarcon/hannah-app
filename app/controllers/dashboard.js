@@ -27,7 +27,11 @@ export default Ember.ObjectController.extend({
         target: this.get('targetValue')
       });
 
-      campaign.save();
+      campaign.save().then(function() {
+        alert('Campaing scheduled');
+      }).catch(function() {
+        alert('Error while scheduling the campaign');
+      });
     }
   }
 });

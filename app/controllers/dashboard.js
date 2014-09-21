@@ -13,7 +13,7 @@ export default Ember.ObjectController.extend({
   }],
 
   selectedAction: Ember.computed.defaultTo('availableActions.firstObject'),
-  targetValue: "aldaia",
+  targetValue: "tattoos",
 
   actions: {
     changeSelectedAction: function(action) {

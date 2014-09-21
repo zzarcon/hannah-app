@@ -1,7 +1,8 @@
 import Ember from "ember";
 
 var Session = Ember.Object.extend({
-  user: null
+  user: null,
+  isLogged: Ember.computed.bool('user.id')
 });
 
 export default {

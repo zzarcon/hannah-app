@@ -5,9 +5,14 @@
     Traditional marketing is death.
   </p>
 </div>
-<div class="input-group">
-  {{input type="text" class="form-control" placeholder="Hastahg, usernames, etc..." value=targetValue}}
-  <div class="input-group-btn">
+<form class="form-inline">
+  <div class="form-group">
+    {{view "Ember.Select" content=popularHashtags value=selectedPopularHastag class="form-control"}}
+  </div>
+  <div class="form-group">
+    {{input type="text" class="form-control" placeholder="Hastahg, usernames, etc..." value=targetValue}}
+  </div>
+  <div class="form-group">
     <button id="selected-action" type="button" class="btn btn-default" tabindex="-1">
       {{selectedAction.text}}
     </button>
@@ -23,7 +28,7 @@
       {{/each}}
     </ul>
   </div>
-</div>
+</form>
 
 <button id="perform-action" type="button" class="btn btn-primary btn-lg btn-block" {{action "createCampaign"}}>
   Perform action

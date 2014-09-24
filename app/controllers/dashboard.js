@@ -1,4 +1,5 @@
 import Ember from "ember";
+import popularHashtags from "../popular-tags";
 
 export default Ember.ObjectController.extend({
   availableActions: [{
@@ -11,9 +12,25 @@ export default Ember.ObjectController.extend({
     value: 'likeFollowerPhotos',
     text: 'like photos of followers'
   }],
+  popularHashtags: popularHashtags,
 
+  selectedPopularHastag: Ember.computed.defaultTo('popularHashtags.firstObject'),
   selectedAction: Ember.computed.defaultTo('availableActions.firstObject'),
-  targetValue: "tattoos",
+
+  /**
+   * By default a random value of the popular tags
+   * @return {String} value of the campaign sended to the server
+   */
+  targetValue: function() {
+    var min = 0, max = this.get('popularHashtags.length') - 1;
+    var index = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    return this.get('popularHashtags').objectAt(index);
+  }.property(),
+
+  setPopularValue: function() {
+    this.set('targetValue', this.get('selectedPopularHastag'));
+  }.observes('selectedPopularHastag'),
 
   actions: {
     changeSelectedAction: function(action) {

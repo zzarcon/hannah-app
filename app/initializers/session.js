@@ -12,9 +12,26 @@ export default {
   initialize: function(container, app) {
     app.register('session:main', Session, {singleton: true});
 
+    var adapter = container.lookup('adapter:application');
+    var headers = adapter.headers || {};
     var store = container.lookup('store:main');
     var session = container.lookup('session:main');
     var sessionUri = MediaGramENV.host + '/api/session';
+    var headerName = 'X-Session-Token';
+    var paramName = "session_token";
+    var token = document.location.href.split(paramName + '=')[1] || sessionStorage.getItem(paramName); //TODO: Improve way to get the token
+
+    if (token && !sessionStorage.getItem(paramName)) {
+      sessionStorage.setItem(paramName, token);
+    }
+    headers[headerName] = token;
+    adapter.headers = headers;
+
+    $.ajaxSetup({
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader(headerName, token);
+      }
+    });
 
     app.inject('controller', 'session', 'session:main');
     app.inject('route', 'session', 'session:main');

@@ -1,0 +1,26 @@
+<div class="campaign">
+  <form class="form-inline">
+    {{!-- <div class="form-group">
+      {{view "Ember.Select" content=popularHashtags value=selectedPopularHastag class="form-control"}}
+    </div> --}}
+    <div class="form-group">
+      {{input type="text" class="form-control" placeholder="Hastahg, usernames, etc..." value=campaign.target}}
+    </div>
+    <div class="form-group">
+      <button id="selected-action" type="button" class="btn btn-default" tabindex="-1">
+        {{selectedAction.text}}
+      </button>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right" role="menu">
+        {{#each item in availableActions}}
+          <li>
+            <a {{action "changeSelectedAction" item}}>{{item.text}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </form>
+</div>

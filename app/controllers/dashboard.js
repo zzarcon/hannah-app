@@ -1,7 +1,7 @@
 import Ember from "ember";
 import popularHashtags from "../popular-tags";
 
-export default Ember.ObjectController.extend({
+export default Ember.ArrayController.extend({
   availableActions: [{
     value: 'likeHashtagPhotos',
     text: 'like photos with this hashtag'
@@ -12,6 +12,9 @@ export default Ember.ObjectController.extend({
     value: 'likeFollowerPhotos',
     text: 'like photos of followers'
   }],
+
+  maximumLikes: 100,
+  availableLikes: 100,
   popularHashtags: popularHashtags,
 
   selectedPopularHastag: Ember.computed.defaultTo('popularHashtags.firstObject'),
@@ -37,7 +40,7 @@ export default Ember.ObjectController.extend({
       this.set('selectedAction', action);
     },
 
-    createCampaign: function() {
+    saveCampaign: function() {
       var action = this.get('selectedAction.value');
       var campaign = this.get('store').createRecord('campaign', {
         actionName: action,

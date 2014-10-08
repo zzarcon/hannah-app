@@ -19,11 +19,13 @@ export default {
     var sessionUri = MediaGramENV.host + '/api/session';
     var headerName = 'X-Session-Token';
     var paramName = "session_token";
-    var token = document.location.href.split(paramName + '=')[1] || sessionStorage.getItem(paramName); //TODO: Improve way to get the token
+    var uriToken = document.location.href.split(paramName + '=')[1]; //TODO: Improve way to get the token
+    var token = uriToken || sessionStorage.getItem(paramName);
 
-    if (token && !sessionStorage.getItem(paramName)) {
+    if (uriToken) {
       sessionStorage.setItem(paramName, token);
     }
+
     headers[headerName] = token;
     adapter.headers = headers;
 

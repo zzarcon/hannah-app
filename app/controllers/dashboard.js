@@ -45,9 +45,9 @@ export default Ember.ObjectController.extend({
       });
 
       campaign.save().then(function() {
-        alert('Campaing scheduled');
+        swal("Success", "Campaing scheduled", "success")
       }).catch(function() {
-        alert('Error while scheduling the campaign');
+        sweetAlert("Error", "Error while scheduling the campaign", "error");
       });
     }
   }

@@ -1,11 +1,22 @@
-<button {{action "createCampaign"}}>Create campaign</button>
-
 <div class="campaigns">
-  {{#each campaign in this}}
-    {{partial "partials/campaign"}}
-  {{/each}}
+  <table>
+    <caption>
+      Active campaign ({{activeCampaigns.length}}) | Available likes ({{availableLikes}})
+      <span class="glyphicon glyphicon-plus create-campaign active" {{action "createCampaign"}}></span>
+    </caption>
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Target</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each campaign in this}}
+        {{partial "partials/campaign"}}
+      {{/each}}
+    </tbody>
+  </table>
 </div>
-
-{{!-- <button id="perform-action" type="button" class="btn btn-primary btn-lg btn-block" {{action "createCampaign"}}>
-  Perform action
-</button> --}}

@@ -1,7 +1,10 @@
 table{
   $gray: #f2f3f6;
+  $light-gray: #ebecef;
   width: 100%;
   font-weight: bold;
+  border: 1px solid $light-gray;
+  text-align: center;
 
   caption{
     text-align: left;
@@ -14,12 +17,13 @@ table{
 
     th{
       color: #757e92;
+      text-align: center;
     }
   }
 
   th, td, caption{
     padding: 1rem;
-    border-bottom: 1px solid #ebecef;
+    border-bottom: 1px solid $light-gray;
   }
 
   tbody{

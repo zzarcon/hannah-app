@@ -26,7 +26,16 @@ export default Ember.ObjectController.extend({
     },
 
     deleteCampaign: function() {
-      this.get('content').destroyRecord();
+      swal({
+        title: "Are you sure?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes",
+        closeOnConfirm: false
+      }, function() {
+        this.get('content').destroyRecord();
+      }.bind(this));
     }
   }
 });

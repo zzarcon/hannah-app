@@ -6,6 +6,7 @@ export default DS.Model.extend({
   target: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
+  likes: 20,
 
   canBeSaved: Ember.computed.and('target', 'isDirty'),
   canBeDeleted: Ember.computed.not('isNew')

@@ -6,8 +6,12 @@ export default DS.Model.extend({
   target: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
-  likes: 20,
+  likes: DS.attr('number', {defaultValue: 20}),
 
-  canBeSaved: Ember.computed.and('target', 'isDirty'),
+  validLikes: function() {
+    return this.get('likes') > 0 && this.get('likes') <= 100;
+  }.property('likes'),
+
+  canBeSaved: Ember.computed.and('target', 'action', 'isDirty', 'validLikes'),
   canBeDeleted: Ember.computed.not('isNew')
 });

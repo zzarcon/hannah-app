@@ -3,7 +3,8 @@ import popularHashtags from "../popular-tags";
 
 export default Ember.ArrayController.extend({
   itemController: 'campaign',
-  availableActions: ['likeHashtagPhotos', 'likeUserPhotos', 'likeFollowerPhotos'],
+  sortProperties: ['updatedAt'],
+  availableActions: ['likeHashtagPhotos'], //, 'likeUserPhotos', 'likeFollowerPhotos'
 
   maximumLikes: 100,
   popularHashtags: popularHashtags,
@@ -12,11 +13,10 @@ export default Ember.ArrayController.extend({
   selectedAction: Ember.computed.defaultTo('availableActions.firstObject'),
 
   activeCampaigns: Ember.computed.filterBy('@this', 'id'),
-  likesExceded: Ember.computed.lt('availableLikes', 0),
+  likesExceded: Ember.computed.lte('availableLikes', 0),
 
   availableLikes: function() {
-    // var likes = this.mapBy('likes');
-    var likes = this.map(function(campaign) {
+    var likes = this.filterBy('likes').map(function(campaign) {
       return parseInt(campaign.get('likes'));
     });
 

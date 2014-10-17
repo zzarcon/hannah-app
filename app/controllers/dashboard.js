@@ -12,9 +12,13 @@ export default Ember.ArrayController.extend({
   selectedAction: Ember.computed.defaultTo('availableActions.firstObject'),
 
   activeCampaigns: Ember.computed.filterBy('@this', 'id'),
+  likesExceded: Ember.computed.lt('availableLikes', 0),
 
   availableLikes: function() {
-    var likes = this.mapBy('likes');
+    // var likes = this.mapBy('likes');
+    var likes = this.map(function(campaign) {
+      return parseInt(campaign.get('likes'));
+    });
 
     if (Ember.isEmpty(likes)) {
       likes = [0];

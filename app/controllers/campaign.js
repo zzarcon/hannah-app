@@ -2,6 +2,8 @@ import Ember from "ember";
 /* global moment, sweetAlert, swal*/
 
 export default Ember.ObjectController.extend({
+  likesExceded: Ember.computed.alias('parentController.likesExceded'),
+
   createdAgo: function() {
     return moment(this.get('createdAt')).fromNow();
   }.property('createdAt'),
@@ -16,6 +18,11 @@ export default Ember.ObjectController.extend({
 
       if (!campaign.get('canBeSaved')) {
         sweetAlert("Error", "The campaign don't have all required properties", "error");
+        return;
+      }
+
+      if (this.get('likesExceded')) {
+        sweetAlert("Error", "You can't exceed the limit of 100 likes per hour", "error");
         return;
       }
 

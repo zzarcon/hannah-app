@@ -17,6 +17,10 @@
     <tbody>
       {{#each campaign in this}}
         {{partial "partials/campaign"}}
+      {{else}}
+        <tr>
+          <th class="no-campaigns" colspan="6">No active campaigns</th>
+        </tr>
       {{/each}}
     </tbody>
   </table>

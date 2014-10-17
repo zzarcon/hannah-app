@@ -1,4 +1,5 @@
 import Ember from "ember";
+/* global moment, sweetAlert, swal*/
 
 export default Ember.ObjectController.extend({
   createdAgo: function() {
@@ -19,7 +20,7 @@ export default Ember.ObjectController.extend({
       }
 
       campaign.save().then(function() {
-        swal("Success", "Campaing created", "success")
+        swal("Success", "Campaing saved", "success");
       }).catch(function() {
         sweetAlert("Error", "Error while creating the campaign", "error");
       });

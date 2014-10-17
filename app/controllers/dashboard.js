@@ -14,7 +14,13 @@ export default Ember.ArrayController.extend({
   activeCampaigns: Ember.computed.filterBy('@this', 'id'),
 
   availableLikes: function() {
-    var usedLikes = this.mapBy('likes').reduce(function(acum, value) {
+    var likes = this.mapBy('likes');
+
+    if (Ember.isEmpty(likes)) {
+      likes = [0];
+    }
+
+    var usedLikes = likes.reduce(function(acum, value) {
       return acum + value;
     });
 

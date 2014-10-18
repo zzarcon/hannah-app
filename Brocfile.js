@@ -13,6 +13,7 @@ app.import('vendor/sweetalert/lib/sweet-alert.css');
 app.import('vendor/ember-backdoor/backdoor.js');
 app.import('vendor/sweetalert/lib/sweet-alert.js');
 app.import('vendor/moment/moment.js');
+app.import('vendor/Chart.js/Chart.js');
 
 //Fonts
 app.import('vendor/bootstrap/dist/fonts/glyphicons-halflings-regular.woff', {

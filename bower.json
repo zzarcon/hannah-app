@@ -14,7 +14,8 @@
     "ember-cli-test-loader": "rjackson/ember-cli-test-loader#0.0.2",
     "ember-backdoor": "zzarcon/ember-backdoor#master",
     "sweetalert": "*",
-    "moment": "*"
+    "moment": "*",
+    "Chart.js": "*"
   },
   "devDependencies": {
     "bootstrap": "~3.2.0"

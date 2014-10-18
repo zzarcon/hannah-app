@@ -1,0 +1,17 @@
+<tr class="campaign">
+  <td class="action">
+    {{view "Ember.Select" content=parentController.availableActions value=campaign.action class="form-control"}}
+  </td>
+  <td class="target">
+    {{input type="text" placeholder="Target..." value=campaign.content.target}}
+  </td>
+  <td class="likes">
+    {{input type="text" placeholder="Number of likes..." value=campaign.likes}}
+  </td>
+  <td class="created-at">{{campaign.createdAgo}}</td>
+  <td class="updated-at">{{campaign.updatedAgo}}</td>
+  <td class="actions">
+    <span {{bind-attr class=":glyphicon :glyphicon-floppy-disk :save-campaign campaign.canBeSaved:active"}} {{action "saveCampaign"}}></span>
+    <span {{bind-attr class=":glyphicon :glyphicon-trash :delete-campaign campaign.canBeDeleted:active"}} {{action "deleteCampaign"}}></span>
+  </td>
+</tr>

@@ -1,6 +1,10 @@
 @import "utils/mixins";
 
 @import "sections";
+@import "tables";
+@import "forms";
+
+.sweet-overlay{z-index: 1500;}
 
 body{
   padding-top: 70px;

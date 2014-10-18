@@ -1,33 +1,27 @@
-<div class="page-header">
-  <h1>Available actions</h1>
-  <p class="lead">
-  </p>
-</div>
-<form class="form-inline">
-  <div class="form-group">
-    {{view "Ember.Select" content=popularHashtags value=selectedPopularHastag class="form-control"}}
-  </div>
-  <div class="form-group">
-    {{input type="text" class="form-control" placeholder="Hastahg, usernames, etc..." value=targetValue}}
-  </div>
-  <div class="form-group">
-    <button id="selected-action" type="button" class="btn btn-default" tabindex="-1">
-      {{selectedAction.text}}
-    </button>
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-      <span class="caret"></span>
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-right" role="menu">
-      {{#each item in availableActions}}
-        <li>
-          <a {{action "changeSelectedAction" item}}>{{item.text}}</a>
-        </li>
+<div class="campaigns">
+  <table>
+    <caption>
+      Active campaign | {{activeCampaigns.length}} | Available likes | {{availableLikes}} |
+      <span class="glyphicon glyphicon-plus create-campaign active" {{action "createCampaign"}}></span>
+    </caption>
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Target</th>
+        <th>Likes</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each campaign in this}}
+        {{partial "partials/campaign"}}
+      {{else}}
+        <tr>
+          <th class="no-campaigns" colspan="6">No active campaigns</th>
+        </tr>
       {{/each}}
-    </ul>
-  </div>
-</form>
-
-<button id="perform-action" type="button" class="btn btn-primary btn-lg btn-block" {{action "createCampaign"}}>
-  Perform action
-</button>
+    </tbody>
+  </table>
+</div>

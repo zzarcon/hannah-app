@@ -1,54 +1,39 @@
 import Ember from "ember";
 import popularHashtags from "../popular-tags";
 
-export default Ember.ObjectController.extend({
-  availableActions: [{
-    value: 'likeHashtagPhotos',
-    text: 'like photos with this hashtag'
-  }, {
-    value: 'likeUserPhotos',
-    text: 'like photos of the user'
-  }, {
-    value: 'likeFollowerPhotos',
-    text: 'like photos of followers'
-  }],
+export default Ember.ArrayController.extend({
+  itemController: 'campaign',
+  sortProperties: ['updatedAt'],
+  availableActions: ['likeHashtagPhotos'], //, 'likeUserPhotos', 'likeFollowerPhotos'
+
+  maximumLikes: 100,
   popularHashtags: popularHashtags,
 
   selectedPopularHastag: Ember.computed.defaultTo('popularHashtags.firstObject'),
   selectedAction: Ember.computed.defaultTo('availableActions.firstObject'),
 
-  /**
-   * By default a random value of the popular tags
-   * @return {String} value of the campaign sended to the server
-   */
-  targetValue: function() {
-    var min = 0, max = this.get('popularHashtags.length') - 1;
-    var index = Math.floor(Math.random() * (max - min + 1)) + min;
+  activeCampaigns: Ember.computed.filterBy('@this', 'id'),
+  likesExceded: Ember.computed.lte('availableLikes', 0),
 
-    return this.get('popularHashtags').objectAt(index);
-  }.property(),
+  availableLikes: function() {
+    var likes = this.filterBy('likes').map(function(campaign) {
+      return parseInt(campaign.get('likes'));
+    });
 
-  setPopularValue: function() {
-    this.set('targetValue', this.get('selectedPopularHastag'));
-  }.observes('selectedPopularHastag'),
+    if (Ember.isEmpty(likes)) {
+      likes = [0];
+    }
+
+    var usedLikes = likes.reduce(function(acum, value) {
+      return acum + value;
+    });
+
+    return this.get('maximumLikes') - usedLikes;
+  }.property('this.@each.likes', 'maximumLikes'),
 
   actions: {
-    changeSelectedAction: function(action) {
-      this.set('selectedAction', action);
-    },
-
     createCampaign: function() {
-      var action = this.get('selectedAction.value');
-      var campaign = this.get('store').createRecord('campaign', {
-        actionName: action,
-        target: this.get('targetValue')
-      });
-
-      campaign.save().then(function() {
-        swal("Success", "Campaing scheduled", "success")
-      }).catch(function() {
-        sweetAlert("Error", "Error while scheduling the campaign", "error");
-      });
+      this.get('store').createRecord('campaign');
     }
   }
 });

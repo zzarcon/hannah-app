@@ -1,0 +1,36 @@
+table{
+  $gray: #f2f3f6;
+  $light-gray: #ebecef;
+  width: 100%;
+  font-weight: bold;
+  border: 1px solid $light-gray;
+  text-align: center;
+
+  caption{
+    text-align: left;
+    background-color: $gray;
+  }
+
+  thead{
+    background-color: $gray;
+    border-top: 2px solid white;
+
+    th{
+      color: #757e92;
+      text-align: center;
+    }
+  }
+
+  th, td, caption{
+    padding: 1rem;
+    border-bottom: 1px solid $light-gray;
+  }
+
+  tbody{
+    tr{
+      &:hover{
+        background-color: #fefbf3;
+      }
+    }
+  }
+}

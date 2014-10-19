@@ -3,13 +3,16 @@
     border: 2px solid #d9d9d9;
     border-radius: 0.5rem;
   }
+
+  $border-color: #d0d0d0;
+
   text-align: center;
 
-  header{
+  .section-header{
     margin-bottom: 1rem;
   }
 
-  .sections-wrapper, header{
+  .sections-wrapper, .section-header{
     @include flexbox;
   }
 
@@ -22,7 +25,12 @@
   }
 
   .stats{
-    @include flexbox;
+    header{
+      border-bottom: 1px solid $border-color;
+    }
+    .content{
+      @include flexbox;
+    }
   }
 
   .stat{
@@ -32,12 +40,12 @@
     &:nth-child(2) {
       &:before{
         content: " ";
-        height: 80%;
-        border: 1px solid #d0d0d0;
+        height: 70%;
+        border: 1px solid $border-color;
         width: 100%;
         position: absolute;
         left: 0;
-        top: 10%;
+        top: 15%;
         border-width: 0 1px 0 1px;
       }
     }
@@ -46,6 +54,25 @@
     }
     .label{
       color: #999;
+    }
+  }
+
+  .divisor{
+    border: none;
+    margin: 1rem 0;
+
+    .stat{
+      &:before{
+        content: none;
+      }
+
+      &.positive{
+        color: green;
+      }
+
+      &.negative{
+        color: red;
+      }
     }
   }
 

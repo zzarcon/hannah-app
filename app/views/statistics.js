@@ -33,9 +33,16 @@ export default Ember.View.extend({
     };
   }.property(),
 
+  options: function() {
+    return {
+      responsive: true,
+      tooltipTemplate: "<%= value %>"
+    };
+  }.property(),
+
   setup: function() {
     var ctx = document.getElementById("statistics").getContext("2d");
-    var myNewChart = new Chart(ctx).Line(this.get('data'));
+    var myNewChart = new Chart(ctx).Line(this.get('data'), this.get('options'));
 
   }.on('didInsertElement')
 });

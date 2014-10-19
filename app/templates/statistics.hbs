@@ -1,2 +1,42 @@
-<h1>Followers growth</h1>
-<canvas id="statistics" {{bind-attr width="view.canvasWidth" height="view.canvasHeight"}}></canvas>
+<header>
+  <h4>Followers growth</h4>
+  <h4>Stats overview</h4>
+</header>
+<div class="sections-wrapper">
+  <section class="followers-growth">
+    <canvas id="statistics" {{bind-attr width="view.canvasWidth" height="view.canvasHeight"}}></canvas>
+  </section>
+  <section class="stats-overview">
+    <div class="stats initial-stats">
+      <div class="stat">
+        <div class="value">{{initialCounts.media}}</div>
+        <div class="label">Photos</div>
+      </div>
+      <div class="stat">
+        <div class="value">{{initialCounts.followers}}</div>
+        <div class="label">Followers</div>
+      </div>
+      <div class="stat">
+        <div class="value">{{initialCounts.following}}</div>
+        <div class="label">Following</div>
+      </div>
+    </div>
+    <div class="divisor">
+      <i class="glyphicon glyphicon-arrow-down"></i>
+    </div>
+    <div class="stats current-stats">
+      <div class="stat">
+        <div class="value">{{currentCounts.media}}</div>
+        <div class="label">Photos</div>
+      </div>
+      <div class="stat">
+        <div class="value">{{currentCounts.followers}}</div>
+        <div class="label">Followers</div>
+      </div>
+      <div class="stat">
+        <div class="value">{{currentCounts.following}}</div>
+        <div class="label">Following</div>
+      </div>
+    </div>
+  </section>
+</div>

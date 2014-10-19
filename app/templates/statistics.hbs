@@ -1,0 +1,61 @@
+<header class="section-header">
+  <h4>Followers growth</h4>
+  <h4>Stats overview</h4>
+</header>
+<div class="sections-wrapper">
+  <section class="followers-growth">
+    <canvas id="statistics" {{bind-attr width="view.canvasWidth" height="view.canvasHeight"}}></canvas>
+  </section>
+  <section class="stats-overview">
+    <div class="stats initial-stats">
+      <header>Initial</header>
+      <div class="content">
+        <div class="stat">
+          <div class="value">{{initialCounts.media}}</div>
+          <div class="label">Photos</div>
+        </div>
+        <div class="stat">
+          <div class="value">{{initialCounts.followers}}</div>
+          <div class="label">Followers</div>
+        </div>
+        <div class="stat">
+          <div class="value">{{initialCounts.following}}</div>
+          <div class="label">Following</div>
+        </div>
+      </div>
+    </div>
+    <div class="divisor stats">
+      <div class="content">
+        <div class="stat">
+          <i class="glyphicon glyphicon-arrow-down"></i>
+          {{mediaVariation}}
+        </div>
+        <div {{bind-attr class=":stat followersBalance"}}>
+          <i class="glyphicon glyphicon-arrow-down"></i>
+          {{followersVariation}}
+        </div>
+        <div {{bind-attr class=":stat followingBalance"}}>
+          <i class="glyphicon glyphicon-arrow-down"></i>
+          {{followingVariation}}
+        </div>
+      </div>
+    </div>
+    <div class="stats current-stats">
+      <header>Current</header>
+      <div class="content">
+        <div class="stat">
+          <div class="value">{{currentCounts.media}}</div>
+          <div class="label">Photos</div>
+        </div>
+        <div class="stat">
+          <div class="value">{{currentCounts.followers}}</div>
+          <div class="label">Followers</div>
+        </div>
+        <div class="stat">
+          <div class="value">{{currentCounts.following}}</div>
+          <div class="label">Following</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

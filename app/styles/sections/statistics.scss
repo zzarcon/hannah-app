@@ -1,0 +1,87 @@
+#statistics-section{
+  @mixin block() {
+    border: 2px solid #d9d9d9;
+    border-radius: 0.5rem;
+  }
+
+  $border-color: #d0d0d0;
+
+  text-align: center;
+
+  .section-header{
+    margin-bottom: 1rem;
+  }
+
+  .sections-wrapper, .section-header{
+    @include flexbox;
+  }
+
+  h4{
+    margin: 0;
+  }
+
+  .followers-growth, .stats{
+    @include block;
+  }
+
+  .stats{
+    header{
+      border-bottom: 1px solid $border-color;
+    }
+    .content{
+      @include flexbox;
+    }
+  }
+
+  .stat{
+    @include flex(1);
+    position: relative;
+
+    &:nth-child(2) {
+      &:before{
+        content: " ";
+        height: 70%;
+        border: 1px solid $border-color;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 15%;
+        border-width: 0 1px 0 1px;
+      }
+    }
+    .value{
+      font-size: 22px;
+    }
+    .label{
+      color: #999;
+    }
+  }
+
+  .divisor{
+    border: none;
+    margin: 1rem 0;
+
+    .stat{
+      &:before{
+        content: none;
+      }
+
+      &.positive{
+        color: green;
+      }
+
+      &.negative{
+        color: red;
+      }
+    }
+  }
+
+  .followers-growth, h4:first-child{
+    @include flex(3);
+  }
+
+  .stats-overview, h4:last-child{
+    @include flex(1);
+    margin-left: 2rem;
+  }
+}

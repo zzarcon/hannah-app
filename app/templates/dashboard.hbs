@@ -1,7 +1,15 @@
-<ul class="liked-media">
-  {{#each media in likedMedia}}
-    <li>
-      <img {{bind-attr src="media.bigPicture"}}>
-    </li>
-  {{/each}}
-</ul>
+<div class="widget latest-photos">
+  <header>Latest liked photos</header>
+  <ul class="liked-media">
+    {{#each media in likedMedia}}
+      <li>
+        <img {{bind-attr src="media.bigPicture"}}>
+        <div class="tags detail-text">
+          {{#each tag in media.tags}}
+            {{tag}}
+          {{/each}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>

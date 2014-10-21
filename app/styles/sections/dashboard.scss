@@ -1,7 +1,27 @@
 #dashboard{
-  .liked-media{
+  .latest-photos{
+    width: 500px;
+    ul{
+      height: 200px;
+      overflow: auto;
+      border: 1px solid #ccc;
+    }
+    li{
+      height: 80px;
+      padding-top: 10px;
+      padding-bottom: 90px;
+      border-bottom: 1px solid #ccc;
+      overflow: hidden;
+    }
+    .tags{
+      margin-left: 90px;
+    }
     img{
+      float: left;
       height: 80px;
     }
+  }
+  .liked-media{
+
   }
 }

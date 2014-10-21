@@ -1,1 +1,7 @@
-DASHBOARD
+<ul class="liked-media">
+  {{#each media in likedMedia}}
+    <li>
+      <img {{bind-attr src="media.bigPicture"}}>
+    </li>
+  {{/each}}
+</ul>

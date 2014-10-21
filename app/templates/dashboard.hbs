@@ -1,27 +1,32 @@
-<div class="campaigns">
-  <table>
-    <caption>
-      Active campaign | {{activeCampaigns.length}} | Available likes | {{availableLikes}} |
-      <span class="glyphicon glyphicon-plus create-campaign active" {{action "createCampaign"}}></span>
-    </caption>
-    <thead>
-      <tr>
-        <th>Action</th>
-        <th>Target</th>
-        <th>Likes</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each campaign in this}}
-        {{partial "partials/campaign"}}
-      {{else}}
-        <tr>
-          <th class="no-campaigns" colspan="6">No active campaigns</th>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+<div class="widget latest-photos">
+  <header>Latest liked photos</header>
+  <ul class="liked-media">
+    {{#each media in likedMedia}}
+      <li>
+        <img {{bind-attr src="media.bigPicture"}}>
+        <div class="tags detail-text">
+          {{#each tag in media.tags}}
+            <a href="//iconosquare.com/viewer.php#/tag/{{unbound tag}}/" target="_blank">#{{tag}}</a>
+          {{/each}}
+        </div>
+        <div class="created-time">Uploaded: {{media.createdAt}}</div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="widget latest-followers">
+  <header>Latest followers</header>
+  <ul class="">
+    {{#each follower in followers}}
+      <a href="//www.instagram.com/{{unbound follower.username}}" target="_blank">
+        <li>
+          <img {{bind-attr src="follower.profilePicture"}}>
+          <div class="detail-text">
+            {{follower.username}}
+          </div>
+        </li>
+      </a>
+    {{/each}}
+  </ul>
 </div>

@@ -1,59 +1,38 @@
-#selected-action{
-  text-transform: capitalize;
-}
+#dashboard{
+  @include flexbox;
 
-#perform-action{
-  margin-top: 10px;
-}
+  .widget{
+    @include flex(1);
+    margin-left: 15px;
 
-.campaigns{
-  .create-campaign{
-    float: right;
-    cursor: pointer;
+    ul{
+      height: 300px;
+      overflow: auto;
+      border: 1px solid #ccc;
+    }
+    li{
+      height: 80px;
+      padding-top: 10px;
+      padding-bottom: 90px;
+      border-bottom: 1px solid #ccc;
+      overflow: hidden;
+    }
+    .tags{
+      max-height: 60px;
+      overflow: hidden;
+    }
+    .tags, .created-time, .detail-text{
+      margin-left: 90px;
+    }
+    .created-time{
+      font-weight: bold;
+    }
+    img{
+      float: left;
+      height: 80px;
+    }
   }
+  .liked-media{
 
-  table{
-    @mixin active-row() {
-      border-color: black;
-      border-radius: px-to-rem(5px);
-    }
-
-    tbody {
-      tr:hover input {@include active-row;}
-
-      input{
-        background: transparent;
-        border: 1px solid transparent;
-        padding: 0.5rem;
-        text-align: center;
-
-        &:hover, &:focus{@include active-row;}
-      }
-
-      //Icons
-      .glyphicon{
-        font-size: 20px;
-        opacity: 0.7;
-        border: 1px solid;
-        padding: 3px;
-        border-radius: 5px;
-
-        &.active{
-          cursor: pointer;
-          opacity: 1;
-
-          &.save-campaign{
-            background: rgba(green, 0.5);
-          }
-          &.delete-campaign{
-            background: rgba(red, 0.5);
-          }
-        }
-      }
-    }
-
-    .no-campaigns{
-      text-align: center;
-    }
   }
 }

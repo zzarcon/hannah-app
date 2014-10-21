@@ -3,7 +3,8 @@ import AuthenticatedRoute from "../mixins/authenticated-route";
 
 export default Ember.Route.extend(AuthenticatedRoute, {
   needsAuthentication: true,
-  beforeModel: function() {
 
+  model: function() {
+    return this.get('store').find('campaign');
   }
 });

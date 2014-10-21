@@ -4,6 +4,7 @@ import DS from "ember-data";
 export default DS.Model.extend({
   attribution: DS.attr(),
   filter: DS.attr('string'),
+  createdTime: DS.attr(),
   caption: DS.attr(),
   from: DS.attr(),
   images: DS.attr('object'),
@@ -15,5 +16,9 @@ export default DS.Model.extend({
   // user: DS.belongsTo('user')
 
   bigPicture: Ember.computed.alias('images.standardResolution.url'),
-  smallPicture: Ember.computed.alias('images.lowResolution.url')
+  smallPicture: Ember.computed.alias('images.lowResolution.url'),
+
+  createdAt: function() {
+    return moment(this.get('createdTime') * 1000).fromNow();
+  }.property('createdTime')
 });

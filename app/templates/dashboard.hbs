@@ -6,10 +6,27 @@
         <img {{bind-attr src="media.bigPicture"}}>
         <div class="tags detail-text">
           {{#each tag in media.tags}}
-            {{tag}}
+            <a href="//iconosquare.com/viewer.php#/tag/{{unbound tag}}/" target="_blank">#{{tag}}</a>
           {{/each}}
         </div>
+        <div class="created-time">Uploaded: {{media.createdAt}}</div>
       </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="widget latest-followers">
+  <header>Latest followers</header>
+  <ul class="">
+    {{#each follower in followers}}
+      <a href="//www.instagram.com/{{unbound follower.username}}" target="_blank">
+        <li>
+          <img {{bind-attr src="follower.profilePicture"}}>
+          <div class="detail-text">
+            {{follower.username}}
+          </div>
+        </li>
+      </a>
     {{/each}}
   </ul>
 </div>

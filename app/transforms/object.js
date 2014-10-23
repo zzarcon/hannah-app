@@ -77,7 +77,7 @@ export default DS.Transform.extend({
         ret.push(key);
       }
     }
-    debugger;
+
     return object && this.decamelizeKeys(object.getProperties(ret));
   },
 

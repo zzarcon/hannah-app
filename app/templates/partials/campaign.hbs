@@ -3,7 +3,7 @@
     {{view "Ember.Select" content=parentController.availableActions value=campaign.action class="form-control"}}
   </td>
   <td class="target">
-    {{input type="text" placeholder="Target..." value=campaign.content.target}}
+    {{input type="text" placeholder="Target..." value=campaign.content.target disabled=campaign.isTargetDisabled}}
   </td>
   <td class="likes">
     {{input type="text" placeholder="Number of likes..." value=campaign.likes}}

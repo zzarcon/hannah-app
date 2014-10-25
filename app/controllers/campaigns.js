@@ -6,7 +6,7 @@ export default Ember.ArrayController.extend({
   sortProperties: ['updatedAt'],
   availableActions: ['likeHashtagPhotos', 'likePopularPhotos'], //, 'likeUserPhotos', 'likeFollowerPhotos'
 
-  maximumLikes: 100,
+  maximumLikes: MediaGramENV.maximumLikes,
   popularHashtags: popularHashtags,
 
   selectedPopularHastag: Ember.computed.defaultTo('popularHashtags.firstObject'),

@@ -20,10 +20,12 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.host = 'http://localhost:3000';
+    ENV.maximumLikes = 90;
   }
 
   if (environment === 'production') {
     ENV.host = 'http://media-gram.herokuapp.com';
+    ENV.maximumLikes = 95;
   }
 
   return ENV;

@@ -1,6 +1,6 @@
 <tr class="campaign">
   <td class="action">
-    {{view "Ember.Select" content=parentController.availableActions value=campaign.action class="form-control"}}
+    {{view "Ember.Select" content=availableActions value=campaign.action class="form-control"}}
   </td>
   <td class="target">
     {{input type="text" placeholder="Target..." value=campaign.content.target disabled=campaign.isTargetDisabled}}

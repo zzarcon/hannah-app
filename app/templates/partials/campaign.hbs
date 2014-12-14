@@ -15,3 +15,12 @@
     <span {{bind-attr class=":glyphicon :glyphicon-trash :delete-campaign campaign.canBeDeleted:active"}} {{action "deleteCampaign"}}></span>
   </td>
 </tr>
+<tr {{bind-attr class=":map campaign.isGeolocation:visible"}}>
+  <td colspan="6">
+    {{#if campaign.validCoords}}
+      {{view "map" latitude=campaign.latitude longitude=campaign.longitude}}
+    {{else}}
+      Loading map...
+    {{/if}}
+  </td>
+</tr>

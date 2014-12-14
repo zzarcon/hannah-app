@@ -12,6 +12,19 @@ export default Ember.ObjectController.extend({
     return moment(this.get('updatedAt')).fromNow();
   }.property('updatedAt'),
 
+  setDefaultCoords: function() {
+    if (this.get('validCoords')) {
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(function(location) {
+      var lat = location.coords.latitude;
+      var lon = location.coords.longitude;
+
+      this.set('content.target', lat + ',' + lon);
+    }.bind(this));
+  }.observes('isGeolocation'),
+
   actions: {
     saveCampaign: function() {
       var campaign = this.get('content');

@@ -4,7 +4,7 @@ import popularHashtags from "../popular-tags";
 export default Ember.ArrayController.extend({
   itemController: 'campaign',
   sortProperties: ['updatedAt'],
-  availableActions: ['likeHashtagPhotos', 'likePopularPhotos'], //, 'likeUserPhotos', 'likeFollowerPhotos'
+  availableActions: ['likeHashtagPhotos', 'likePopularPhotos', 'geolocation'], //, 'likeUserPhotos', 'likeFollowerPhotos'
 
   maximumLikes: MediaGramENV.maximumLikes,
   popularHashtags: popularHashtags,

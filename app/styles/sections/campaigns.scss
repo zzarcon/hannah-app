@@ -6,6 +6,7 @@
   margin-top: 10px;
 }
 
+
 .campaigns{
   .create-campaign{
     float: right;
@@ -51,6 +52,26 @@
             background: rgba(red, 0.5);
           }
         }
+      }
+
+      .map{
+        transition: opacity 0.5s;
+        opacity: 0;
+        max-height: 0;
+        td{
+          display: none;
+        }
+        &.visible{
+          opacity: 1;
+          max-height: 50rem;
+          td{
+            display: table-cell;
+          }
+        }
+      }
+
+      .leaflet-container{
+        height: 20rem;
       }
     }
 

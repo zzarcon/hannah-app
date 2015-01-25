@@ -1,0 +1,47 @@
+.not-logged{
+  width: 100%;
+  height: 100%;
+  background: $main-bg-color;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #b3b3b3;
+
+  .login-wrapper{
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    -webkit-animation: 1.5s slide-down forwards;
+    transform: translate(-50%, 0);
+  }
+  .logo{
+    transform: scale(0.8);
+  }
+  .ig-logo-wrapper{
+    opacity: 0;
+    -webkit-animation: 1s 1.3s fade-in forwards;
+  }
+  .ig-logo{
+    transform: scale(0.6);
+  }
+}
+
+@include keyframe('slide-down') {
+  0% {
+    opacity: 0;
+    top: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@include keyframe('fade-in') {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

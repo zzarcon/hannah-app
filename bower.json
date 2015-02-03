@@ -16,7 +16,7 @@
     "sweetalert": "*",
     "moment": "*",
     "Chart.js": "1.0.1-beta.4",
-    "sass-flex-mixin": "git@github.com:mastastealth/sass-flex-mixin.git",
+    "sass-flex-mixin": "1.0.0",
     "leaflet": "*",
     "ember-leaflet": "0.6.0",
     "bourbon": "~3.2.1"

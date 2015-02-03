@@ -1,9 +1,9 @@
-default: build push promote
+default: push
 
 build:
 	ember build --environment=production
 push:
 	git push
-	divshot push
+	git push heroku master
 promote:
 	divshot promote development production

@@ -1,6 +1,8 @@
+@import '../../vendor/bourbon/dist/bourbon';
 @import "utils/mixins";
 @import "vendor/sass-flex-mixin/flex";
-
+@import "resets";
+@import "config";
 @import "sections";
 @import "tables";
 @import "forms";

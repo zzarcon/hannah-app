@@ -8,28 +8,29 @@
   color: #b3b3b3;
 
   .login-wrapper{
+    @include animation(1.5s slide-down forwards);
+    @include transform(translate(-50%, 0));
     text-align: center;
     position: absolute;
     left: 50%;
-    -webkit-animation: 1.5s slide-down forwards;
-    transform: translate(-50%, 0);
+
     a{
       color: white;
       text-decoration: none;
     }
   }
   .logo{
-    transform: scale(0.8);
+    @include transform(scale(0.8));
   }
   .hannah-text{
+    @include animation(1s 1.3s fade-in forwards);
     opacity: 0;
     margin-top: -1.5rem;
-    -webkit-animation: 1s 1.3s fade-in forwards;
   }
   .ig-logo-wrapper{
-    transition: border 0.6s;
+    @include animation(1s 1.85s fade-in forwards);
+    @include transition(border 0.6s);
     opacity: 0;
-    -webkit-animation: 1s 1.85s fade-in forwards;
     border: 2px solid transparent;
     padding-right: 1.2rem;
     border-radius: 10px;
@@ -40,7 +41,7 @@
     }
   }
   .ig-logo{
-    transform: scale(0.6);
+    @include transform(scale(0.6));
   }
 }
 
@@ -50,9 +51,9 @@
     top: 0;
   }
   100% {
+    @include transform(translate(-50%, -50%));
     opacity: 1;
     top: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 @include keyframe('fade-in') {

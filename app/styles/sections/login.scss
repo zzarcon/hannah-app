@@ -31,7 +31,7 @@
     @include animation(1s 1.85s fade-in forwards);
     @include transition(border 0.6s);
     opacity: 0;
-    border: 2px solid transparent;
+    border: 2px solid rgba(white, 0.2);
     padding-right: 1.2rem;
     border-radius: 10px;
     cursor: pointer;

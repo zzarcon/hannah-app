@@ -3,7 +3,7 @@ L.Icon.Default.imagePath = 'images';
 
 var markerLayer = EmberLeaflet.MarkerLayer.extend(EmberLeaflet.DraggableMixin, EmberLeaflet.PopupMixin, {
   dragend: function() {
-    this.get('layer._latlng')
+    this.get('layer._latlng');
   }
 });
 

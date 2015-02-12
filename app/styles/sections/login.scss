@@ -25,7 +25,7 @@
   }
   .hannah-text{
     @include animation(1s 1.3s fade-in forwards);
-    @include translateZ(0);
+    @include transform(translateZ(0));
     opacity: 0;
     margin-top: -1.5rem;
   }

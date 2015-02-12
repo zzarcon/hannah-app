@@ -4,6 +4,9 @@
     "window": true,
     "MediaGramENV": true,
     "EmberLeaflet": true,
+    "moment": true,
+    "$": true,
+    "Chart": true,
     "L": true
   },
   "browser" : true,

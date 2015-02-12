@@ -19,7 +19,7 @@ export default Ember.View.extend({
   }.property(),
 
   data: function() {
-    var user = this.get('session.user')
+    var user = this.get('session.user');
     var initFollowers = user.get('initialCounts.followers');
     var currentFollowers = user.get('currentCounts.followers');
     var initDate = moment(user.get('registeredAt')).format('LL');
@@ -42,7 +42,7 @@ export default Ember.View.extend({
 
   setup: function() {
     var ctx = document.getElementById("statistics").getContext("2d");
-    var myNewChart = new Chart(ctx).Line(this.get('data'), this.get('options'));
+    new Chart(ctx).Line(this.get('data'), this.get('options'));
 
   }.on('didInsertElement')
 });

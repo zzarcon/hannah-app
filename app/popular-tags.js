@@ -45,4 +45,4 @@ export default [
   'colorful',
   'style',
   'swag'
-]
+];

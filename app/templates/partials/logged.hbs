@@ -13,9 +13,11 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        {{#link-to "login" tagName="li"}}
-          <a href="#">Login</a>
-        {{/link-to}}
+        {{#unless session.isLogged}}
+          {{#link-to "login" tagName="li"}}
+            <a href="#">Login</a>
+          {{/link-to}}
+        {{/unless}}
         {{#link-to "dashboard" tagName="li"}}
           <a href="#">Dashboard</a>
         {{/link-to}}

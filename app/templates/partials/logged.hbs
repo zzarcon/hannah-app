@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="app-header navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,6 +29,7 @@
         {{/link-to}}
       </ul>
       <ul id="profile-info" class="nav navbar-nav navbar-right">
+        <li><button type="button" class="logout btn btn-primary" {{action "logout"}}>Logout</button></li>
         <li>{{session.user.username}} <img {{bind-attr src="session.user.profilePicture"}}></li>
       </ul>
     </div>

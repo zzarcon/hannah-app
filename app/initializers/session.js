@@ -21,10 +21,10 @@ export default {
     var headerName = 'X-Session-Token';
     var paramName = "session_token";
     var uriToken = document.location.href.split(paramName + '=')[1]; //TODO: Improve way to get the token
-    var token = uriToken || sessionStorage.getItem(paramName);
+    var token = uriToken || localStorage.getItem(paramName);
 
     if (uriToken) {
-      sessionStorage.setItem(paramName, token);
+      localStorage.setItem(paramName, token);
     }
 
     headers[headerName] = token;

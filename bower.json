@@ -19,7 +19,7 @@
     "Chart.js": "1.0.1-beta.4",
     "sass-flex-mixin": "1.0.0",
     "leaflet": "*",
-    "ember-leaflet": "0.6.0",
+    "ember-leaflet": "0.6.1",
     "bourbon": "~3.2.1",
     "bootstrap": "3.3.2"
   }

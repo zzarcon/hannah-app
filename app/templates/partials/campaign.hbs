@@ -1,12 +1,12 @@
 <tr class="campaign">
   <td class="action">
-    {{view "Ember.Select" content=availableActions value=campaign.action class="form-control"}}
+    {{view "select" content=availableActions value=campaign.action class="form-control"}}
   </td>
   <td class="target">
     {{input type="text" placeholder="Target..." value=campaign.content.target disabled=campaign.isTargetDisabled}}
   </td>
   <td class="likes">
-    {{input type="text" placeholder="Number of likes..." value=campaign.likes}}
+    {{input type="number" placeholder="Number of likes..." value=campaign.likes}}
   </td>
   <td class="created-at">{{campaign.createdAgo}}</td>
   <td class="updated-at">{{campaign.updatedAgo}}</td>

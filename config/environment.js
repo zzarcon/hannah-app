@@ -13,11 +13,8 @@ module.exports = function(environment) {
       'report-uri': "*"
     },
     EmberENV: {
-      FEATURES: {
-        'ember-htmlbars': true
-      }
+      FEATURES: {}
     },
-
     APP: {}
   };
 

@@ -1,11 +1,13 @@
 import Ember from "ember";
 import DS from "ember-data";
+import config from 'media-gram/config/environment';
 
 export default DS.Model.extend({
   action: DS.attr('string', {defaultValue: 'likeHashtagPhotos'}),
   target: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
+  username: DS.attr('string'),
   likes: DS.attr('number', {defaultValue: 20}),
 
   canBeSaved: Ember.computed.and('validTarget', 'action', 'isDirty', 'validLikes'),
@@ -17,7 +19,7 @@ export default DS.Model.extend({
   longitude: Ember.computed.alias('geolocation.longitude'),
 
   validLikes: function() {
-    return this.get('likes') > 0 && this.get('likes') <= 100;
+    return this.get('likes') > 0 && this.get('likes') <= config.maximumLikes;
   }.property('likes'),
 
   validTarget: function() {
@@ -42,8 +44,9 @@ export default DS.Model.extend({
   }.property('invalidCoords', 'action'),
 
   resetTarget: function() {
-    if (this.get('isTargetDisabled') || this.get('invalidCoords')) {
-      this.set('target', null);
-    }
+    // if (this.get('isTargetDisabled') || this.get('invalidCoords')) {
+    //   debugger;
+    //   this.set('target', null);
+    // }
   }.observes('isTargetDisabled', 'invalidCoords')
 });

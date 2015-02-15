@@ -16,6 +16,7 @@ export default DS.Model.extend({
   comments: DS.attr('object'),
   likes: DS.attr('object'),
   user: DS.attr('object'),
+  videos: DS.attr('object'),
   location: DS.attr(),
 
   bigPicture: Ember.computed.alias('images.standardResolution.url'),

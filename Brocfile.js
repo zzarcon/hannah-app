@@ -6,7 +6,11 @@ var templateTree = new HtmlbarsCompiler('app/templates', {
   isHTMLBars: true,
   templateCompiler: require('./bower_components/ember/ember-template-compiler')
 });
-var app = new EmberApp();
+var app = new EmberApp({
+  fingerprint: {
+    exclude: ['marker-icon', 'marker-shadow']
+  }
+});
 
 //Styles
 app.import('bower_components/bootstrap/dist/css/bootstrap.css', {

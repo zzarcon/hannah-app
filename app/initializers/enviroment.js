@@ -1,6 +1,8 @@
 import Ember from "ember";
+import config from 'media-gram/config/environment';
+
 var ENV = Ember.ObjectProxy.extend({
-  content: window.MediaGramENV
+  content: config
 });
 
 export default {

@@ -1,4 +1,5 @@
 import Ember from "ember";
+import config from 'media-gram/config/environment';
 
 var Session = Ember.Object.extend({
   user: null,
@@ -16,7 +17,7 @@ export default {
     var headers = adapter.headers || {};
     var store = container.lookup('store:main');
     var session = container.lookup('session:main');
-    var sessionUri = MediaGramENV.host + '/api/session';
+    var sessionUri = config.host + '/api/session';
     var headerName = 'X-Session-Token';
     var paramName = "session_token";
     var uriToken = document.location.href.split(paramName + '=')[1]; //TODO: Improve way to get the token

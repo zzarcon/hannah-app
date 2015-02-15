@@ -1,12 +1,13 @@
 import Ember from "ember";
 import popularHashtags from "../popular-tags";
+import config from 'media-gram/config/environment';
 
 export default Ember.ArrayController.extend({
   itemController: 'campaign',
   sortProperties: ['updatedAt'],
   availableActions: ['likeHashtagPhotos', 'likePopularPhotos', 'geolocation'], //, 'likeUserPhotos', 'likeFollowerPhotos'
 
-  maximumLikes: MediaGramENV.maximumLikes,
+  maximumLikes: config.maximumLikes,
   popularHashtags: popularHashtags,
 
   selectedPopularHastag: Ember.computed.defaultTo('popularHashtags.firstObject'),

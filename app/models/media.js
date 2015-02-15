@@ -12,8 +12,11 @@ export default DS.Model.extend({
   tags: DS.attr(),
   type: DS.attr('string'),
   userHasLiked: DS.attr('boolean'),
+  usersInPhoto: DS.attr('object'),
+  comments: DS.attr('object'),
+  likes: DS.attr('object'),
+  user: DS.attr('object'),
   location: DS.attr(),
-  // user: DS.belongsTo('user')
 
   bigPicture: Ember.computed.alias('images.standardResolution.url'),
   smallPicture: Ember.computed.alias('images.lowResolution.url'),

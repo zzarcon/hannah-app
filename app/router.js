@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import config from 'media-gram/config/environment';
 
 var Router = Ember.Router.extend({
-  location: MediaGramENV.locationType
+  location: config.locationType
 });
 
 Router.map(function() {

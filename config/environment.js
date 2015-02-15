@@ -6,6 +6,12 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    contentSecurityPolicy: {
+      'img-src': "* 'self' 'unsafe-inline'",
+      'connect-src': "*",
+      'style-src': "* 'self' 'unsafe-inline'",
+      'report-uri': "*"
+    },
     EmberENV: {
       FEATURES: {}
     },

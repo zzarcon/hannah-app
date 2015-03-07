@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('dashboard');
   this.route('campaigns');
   this.route('statistics');
+  this.route('admin');
 });
 
 export default Router;

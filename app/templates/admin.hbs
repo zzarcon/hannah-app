@@ -1,1 +1,9 @@
-{{outlet}}
+{{#each user in activeUsers}}
+  <div class="user">
+    <img {{bind-attr src="user.profilePicture" alt="user.username"}}>
+    {{user.username}}
+    <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
+      <button type="button" class="btn btn-primary">Impersonate</button>
+    </a>
+  </div>
+{{/each}}

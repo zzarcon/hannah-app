@@ -1,7 +1,7 @@
 {{#each user in activeUsers}}
   <div class="user">
-    <img {{bind-attr src="user.profilePicture" alt="user.username"}}>
-    {{user.username}}
+    <p>{{user.username}}</p>
+    <p>Active campaigns: {{user.activeCampaigns}}</p>
     <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
       <button type="button" class="btn btn-primary">Impersonate</button>
     </a>

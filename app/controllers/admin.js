@@ -6,5 +6,5 @@ export default Ember.ObjectController.extend({
   }.property(),
 
   //Only show registered users in the section
-  activeUsers: Ember.computed.filterBy('users', 'isRegistered', true)
+  activeUsers: Ember.computed.filterBy('users', 'impersonable', true)
 });

@@ -1,0 +1,9 @@
+{{#each user in activeUsers}}
+  <div class="user">
+    <p>{{user.username}}</p>
+    <p>Active campaigns: {{user.activeCampaigns}}</p>
+    <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
+      <button type="button" class="btn btn-primary">Impersonate</button>
+    </a>
+  </div>
+{{/each}}

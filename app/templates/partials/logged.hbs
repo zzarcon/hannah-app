@@ -27,6 +27,11 @@
         {{#link-to "statistics" tagName="li"}}
           <a href="#">Statistics</a>
         {{/link-to}}
+        {{#if session.user.isAdmin}}
+          {{#link-to "admin" tagName="li"}}
+            <a href="#">Admin</a>
+          {{/link-to}}
+        {{/if}}
       </ul>
       <ul id="profile-info" class="nav navbar-nav navbar-right">
         <li><button type="button" class="logout btn btn-primary" {{action "logout"}}>Logout</button></li>

@@ -13,6 +13,8 @@ export default Ember.ObjectController.extend({
   }.property('updatedAt'),
 
   setDefaultCoords: function() {
+    return;
+
     if (this.get('validCoords')) {
       return;
     }

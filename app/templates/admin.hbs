@@ -1,9 +1,22 @@
-{{#each user in activeUsers}}
-  <div class="user">
-    <p>{{user.username}}</p>
-    <p>Active campaigns: {{user.activeCampaigns}}</p>
-    <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
-      <button type="button" class="btn btn-primary">Impersonate</button>
-    </a>
-  </div>
-{{/each}}
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Active campaigns</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each user in activeUsers}}
+      <tr>
+        <th>{{user.username}}</th>
+        <th>{{user.activeCampaigns}}</th>
+        <th>
+          <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
+            <button type="button" class="btn btn-primary">Impersonate</button>
+          </a>
+        </th>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

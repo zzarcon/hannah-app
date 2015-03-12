@@ -15,12 +15,12 @@ module.exports = function(environment) {
     EmberENV: {
       FEATURES: {}
     },
-    APP: {}
+    APP: {},
+    maximumLikes: 93
   };
 
   if (environment === 'development') {
     ENV.host = 'http://localhost:3000';
-    ENV.maximumLikes = 90;
   }
 
   if (environment === 'test') {
@@ -37,7 +37,6 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.host = 'http://media-gram.herokuapp.com';
-    ENV.maximumLikes = 95;
   }
 
   return ENV;

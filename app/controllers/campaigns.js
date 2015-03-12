@@ -5,7 +5,7 @@ import config from 'media-gram/config/environment';
 export default Ember.ArrayController.extend({
   itemController: 'campaign',
   sortProperties: ['updatedAt'],
-  availableActions: ['likeHashtagPhotos', 'likePopularPhotos', 'geolocation'], //, 'likeUserPhotos', 'likeFollowerPhotos'
+  availableActions: ['likeHashtagPhotos'], //, 'likePopularPhotos', 'geolocation', 'likeUserPhotos', 'likeFollowerPhotos'
 
   maximumLikes: config.maximumLikes,
   popularHashtags: popularHashtags,

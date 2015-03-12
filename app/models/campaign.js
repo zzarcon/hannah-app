@@ -8,7 +8,7 @@ export default DS.Model.extend({
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date'),
   username: DS.attr('string'),
-  likes: DS.attr('number', {defaultValue: 20}),
+  likes: DS.attr('number', {defaultValue: config.maximumLikes}),
 
   canBeSaved: Ember.computed.and('validTarget', 'action', 'isDirty', 'validLikes'),
   canBeDeleted: Ember.computed.not('isNew'),

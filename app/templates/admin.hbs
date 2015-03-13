@@ -3,19 +3,21 @@
     <tr>
       <th>Username</th>
       <th>Active campaigns</th>
+      <th>Expires in</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     {{#each user in activeUsers}}
       <tr>
-        <th>{{user.username}}</th>
-        <th>{{user.activeCampaigns}}</th>
-        <th>
+        <td>{{user.username}}</td>
+        <td>{{user.activeCampaigns}}</td>
+        <td>{{user.subscriptionExpiresIn}}</td>
+        <td>
           <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
             <button type="button" class="btn btn-primary">Impersonate</button>
           </a>
-        </th>
+        </td>
       </tr>
     {{/each}}
   </tbody>

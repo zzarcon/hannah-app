@@ -17,6 +17,12 @@ export default DS.Model.extend({
   isAdmin: Ember.computed.alias('is_admin'),
   initialCounts: Ember.computed.alias('initial_counts'),
   currentCounts: Ember.computed.alias('current_counts'),
+  subscription_expires_at: DS.attr('date'),
+  subscriptionExpiresAt: Ember.computed.alias('subscription_expires_at'),
+
+  subscriptionExpiresIn: function() {
+    return moment(this.get('subscriptionExpiresAt')).fromNow();
+  }.property('subscriptionExpiresAt'),
 
   isRegistered: Ember.computed.bool('createdAt')
 });

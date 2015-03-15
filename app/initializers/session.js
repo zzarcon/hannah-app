@@ -2,8 +2,10 @@ import Ember from "ember";
 import config from 'media-gram/config/environment';
 
 var Session = Ember.Object.extend({
+  error: null,
   user: null,
-  isLogged: Ember.computed.bool('user.id')
+  isLogged: Ember.computed.bool('user.id'),
+  isExpired: Ember.computed.equal('error', 'Subscription has expired')
 });
 
 export default {
@@ -54,7 +56,13 @@ export default {
       }
 
       app.advanceReadiness();
-    }).fail(function() {
+    }).fail(function(response) {
+      var json = response.responseJSON;
+
+      if (json.error) {
+        session.set('error', json.error);
+      }
+
       app.advanceReadiness();
     });
   }

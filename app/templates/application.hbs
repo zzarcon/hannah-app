@@ -1,5 +1,11 @@
-{{#if session.isLogged}}
-  {{partial "partials/logged"}}
+{{#if session.isExpired}}
+  <div class="session-error">
+    Your subscription to HannaH has expired, if you want to continue with the service please send an email to info@hannah.com
+  </div>
 {{else}}
-  {{partial "partials/login"}}
+  {{#if session.isLogged}}
+    {{partial "partials/logged"}}
+  {{else}}
+    {{partial "partials/login"}}
+  {{/if}}
 {{/if}}

@@ -46,12 +46,7 @@
     @include transform(scale(0.6));
   }
 }
-.session-error{
-  text-align: center;
-  margin: 1rem auto;
-  color: white;
-  font-size: 20px;
-}
+
 @include keyframe('slide-down') {
   0% {
     opacity: 0;

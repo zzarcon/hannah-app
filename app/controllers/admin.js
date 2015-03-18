@@ -8,5 +8,19 @@ export default Ember.ObjectController.extend({
 
   //Only show registered users in the section
   unsortedActiveUsers: Ember.computed.filterBy('users', 'impersonable', true),
-  activeUsers: Ember.computed.sort('unsortedActiveUsers', 'usersSort')
+  activeUsers: Ember.computed.sort('unsortedActiveUsers', 'usersSort'),
+
+  actions: {
+    save: function(user) {
+      if (!user) {
+        return;
+      }
+
+      user.save().then(function() {
+        swal("Success", "User saved", "success");
+      }).catch(function() {
+        sweetAlert("Error", "The cant be saved", "error");
+      });
+    }
+  }
 });

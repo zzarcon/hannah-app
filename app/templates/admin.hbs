@@ -5,6 +5,7 @@
       <th>Active campaigns</th>
       <th>Expires in</th>
       <th>Action</th>
+      <th>Save</th>
     </tr>
   </thead>
   <tbody>
@@ -12,11 +13,14 @@
       <tr>
         <td>{{user.username}}</td>
         <td>{{user.activeCampaigns}}</td>
-        <td>{{user.subscriptionExpiresIn}}</td>
+        <td>{{date-picker date=user.subscriptionExpiresAt valueFormat='date' format="DD-MM-YYYY"}}</td>
         <td>
           <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
             <button type="button" class="btn btn-primary">Impersonate</button>
           </a>
+        </td>
+        <td>
+          <button type="button" class="btn btn-success" {{bind-attr disabled="user.isSaving"}} {{action "save" user}}>Save</button>
         </td>
       </tr>
     {{/each}}

@@ -7,8 +7,15 @@ export default Ember.ObjectController.extend({
   }.property(),
 
   //Only show registered users in the section
-  unsortedActiveUsers: Ember.computed.filterBy('users', 'impersonable', true),
-  activeUsers: Ember.computed.sort('unsortedActiveUsers', 'usersSort'),
+  impersonableUsers: Ember.computed.filterBy('users', 'impersonable', true),
+  activeUsers: Ember.computed.filterBy('impersonableUsers', 'isExpired', false),
+  sortedUsers: Ember.computed.sort('impersonableUsers', 'usersSort'),
+
+  totalCampaigns: function() {
+    return this.get('impersonableUsers').mapBy('activeCampaigns').reduce(function(prev, current) {
+      return prev + current;
+    });
+  }.property('impersonableUsers.length'),
 
   actions: {
     save: function(user) {

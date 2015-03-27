@@ -1,26 +1,29 @@
+<h4>Total users ({{impersonableUsers.length}}) | Active users ({{activeUsers.length}}) | Total campaigns ({{totalCampaigns}})</h4>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th>Username</th>
       <th>Active campaigns</th>
+      <th>Expired</th>
       <th>Expires in</th>
       <th>Action</th>
       <th>Save</th>
     </tr>
   </thead>
   <tbody>
-    {{#each user in activeUsers}}
-      <tr>
+    {{#each user in sortedUsers}}
+      <tr {{bind-attr class="user.isExpired:danger"}}>
         <td>{{user.username}}</td>
         <td>{{user.activeCampaigns}}</td>
-        <td>{{date-picker date=user.subscriptionExpiresAt valueFormat='date' format="DD-MM-YYYY"}}</td>
+        <td>{{user.isExpired}}</td>
+        <td>{{date-picker date=user.subscriptionExpiresAt valueFormat='date' format="DD-MM-YYYY"}} : {{user.subscriptionExpiresIn}}</td>
         <td>
           <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
             <button type="button" class="btn btn-primary">Impersonate</button>
           </a>
         </td>
         <td>
-          <button type="button" class="btn btn-success" {{bind-attr disabled="user.isSaving"}} {{action "save" user}}>Save</button>
+          <button type="button" class="btn btn-success" {{bind-attr disabled="user.isClean"}} {{action "save" user}}>Save</button>
         </td>
       </tr>
     {{/each}}

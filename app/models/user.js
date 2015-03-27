@@ -19,10 +19,14 @@ export default DS.Model.extend({
   currentCounts: Ember.computed.alias('current_counts'),
   subscription_expires_at: DS.attr('date'),
   subscriptionExpiresAt: Ember.computed.alias('subscription_expires_at'),
+  isRegistered: Ember.computed.bool('createdAt'),
+  isClean: Ember.computed.not('isDirty'),
 
   subscriptionExpiresIn: function() {
     return moment(this.get('subscriptionExpiresAt')).fromNow();
   }.property('subscriptionExpiresAt'),
 
-  isRegistered: Ember.computed.bool('createdAt')
+  isExpired: function() {
+    return this.get('subscriptionExpiresAt') < new Date();
+  }.property('subscriptionExpiresAt')
 });

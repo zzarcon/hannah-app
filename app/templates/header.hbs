@@ -33,6 +33,9 @@
           {{/link-to}}
         {{/if}}
       </ul>
+      <ul class="nav navbar-nav subscription-advice">
+        <li class="label label-info">Your subscription expires <strong>{{session.user.subscriptionExpiresIn}}</strong></li>
+      </ul>
       <ul id="profile-info" class="nav navbar-nav navbar-right">
         <li><button type="button" class="logout btn btn-primary" {{action "logout"}}>Logout</button></li>
         <li>{{session.user.username}} <img {{bind-attr src="session.user.profilePicture"}}></li>

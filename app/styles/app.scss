@@ -22,7 +22,15 @@ body{
 
 #profile-info{
   text-transform: capitalize;
-
+  
+  a{
+    display: inline;
+  }
+  .btn{
+    margin-top: 0.75rem;
+    margin-right: 1rem;
+  }
+  
   img{
     @include square(50px);
   }
@@ -36,10 +44,6 @@ body{
   }
 }
 .app-header{
-  .logout{
-    margin-top: 0.75rem;
-    margin-right: 1rem;
-  }
   .subscription-advice{
     margin-top: 1.8rem;
     margin-left: 10rem;

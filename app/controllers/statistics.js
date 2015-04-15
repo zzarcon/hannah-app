@@ -4,7 +4,7 @@ function format(n) {
     return (n > 0 ? '+' : '') + n;
 }
 
-export default Ember.ObjectController.extend({
+export default Ember.ArrayController.extend({
   initialCounts: Ember.computed.alias('session.user.initialCounts'),
   currentCounts: Ember.computed.alias('session.user.currentCounts'),
 

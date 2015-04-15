@@ -13,22 +13,22 @@ var dataset = {
 export default Ember.View.extend({
   elementId: 'statistics-section',
   canvasHeight: 300,
+  displayStatsLimit: 20,
 
   canvasWidth: function() {
     return $(window).width() - 200;
   }.property(),
 
   data: function() {
-    var user = this.get('session.user');
-    var initFollowers = user.get('initialCounts.followers');
-    var currentFollowers = user.get('currentCounts.followers');
-    var initDate = moment(user.get('registeredAt')).format('LL');
-    var now = moment().format('LL');
+    var stats = this.get('controller.store').all('followersStat').slice(0, this.get('displayStatsLimit'));
+    var labels = stats.map(function(stat) {
+      return moment(stat.get('date')).format('DD/MM');
+    });
 
-    dataset.data = [initFollowers, currentFollowers];
+    dataset.data = stats.mapBy('stat');
 
     return {
-      labels: [initDate, now],
+      labels: labels,
       datasets: [dataset]
     };
   }.property(),
@@ -42,7 +42,7 @@ export default Ember.View.extend({
 
   setup: function() {
     var ctx = document.getElementById("statistics").getContext("2d");
-    new Chart(ctx).Line(this.get('data'), this.get('options'));
 
+    new Chart(ctx).Line(this.get('data'), this.get('options'));
   }.on('didInsertElement')
 });

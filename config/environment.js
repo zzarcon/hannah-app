@@ -10,7 +10,8 @@ module.exports = function(environment) {
       'img-src': "* 'self' 'unsafe-inline'",
       'connect-src': "*",
       'style-src': "* 'self' 'unsafe-inline'",
-      'report-uri': "*"
+      'report-uri': "*",
+      'script-src': "* 'self' 'unsafe-inline'",
     },
     EmberENV: {
       FEATURES: {}

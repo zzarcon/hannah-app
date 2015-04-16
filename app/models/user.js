@@ -9,6 +9,7 @@ export default DS.Model.extend({
   fullName: DS.attr('string'),
   activeCampaigns: DS.attr('number'),
   impersonable: DS.attr('boolean'),
+  email: DS.attr('string'),
 
   //TODO: Improve this
   created_at: DS.attr('date'),

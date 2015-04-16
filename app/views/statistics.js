@@ -20,9 +20,9 @@ export default Ember.View.extend({
   }.property(),
 
   data: function() {
-    var stats = this.get('controller.store').all('followersStat').slice(0, this.get('displayStatsLimit'));
+    var stats = this.get('controller').slice(0, this.get('displayStatsLimit'));
     var labels = stats.map(function(stat) {
-      return moment(stat.get('date')).format('DD/MM');
+      return moment(stat.get('date')).format('DD/MM/YY');
     });
 
     dataset.data = stats.mapBy('stat');

@@ -5,6 +5,9 @@ function format(n) {
 }
 
 export default Ember.ArrayController.extend({
+  sortProperties: ['date'],
+  sortAscending: true,
+  
   initialCounts: Ember.computed.alias('session.user.initialCounts'),
   currentCounts: Ember.computed.alias('session.user.currentCounts'),
 

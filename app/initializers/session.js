@@ -46,13 +46,13 @@ export default {
     app.deferReadiness();
 
     Ember.$.get(sessionUri).then(function(response) {
-      if (response.user) {
-        var user = Ember.merge(response.user, {
-          fullName: response.user.user_name,
-          profilePicture: response.user.profile_picture
-        });
+      var user = response.user;
+      
+      if (user) {
+        store.pushPayload('user', {user: user});
+        user = store.getById('user', user.id);
 
-        session.set('user', store.createRecord('user', user));
+        session.set('user', user);
       }
 
       app.advanceReadiness();

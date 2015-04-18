@@ -59,7 +59,7 @@ export default {
     }).fail(function(response) {
       var json = response.responseJSON;
 
-      if (json.error) {
+      if (json && json.error) {
         session.set('error', json.error);
       }
 

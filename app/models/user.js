@@ -19,7 +19,8 @@ export default DS.Model.extend({
   counts: attr(),
   subscriptionExpiresAt: attr('date'),
   profilePicture: attr('string'),
-
+  email: DS.attr('string'),
+  
   isRegistered: Ember.computed.bool('createdAt'),
   isClean: Ember.computed.not('isDirty'),
 

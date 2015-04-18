@@ -11,6 +11,10 @@ export default Ember.ArrayController.extend({
   initialCounts: Ember.computed.alias('session.user.initialCounts'),
   currentCounts: Ember.computed.alias('session.user.currentCounts'),
 
+  now: function() {
+    return moment().format('L');
+  }.property(),
+
   followingBalance: function() {
     return this.get('followingVariation') < 0 ? 'positive' : 'negative';
   }.property('followingVariation'),

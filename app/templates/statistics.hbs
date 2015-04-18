@@ -8,7 +8,7 @@
   </section>
   <section class="stats-overview">
     <div class="stats initial-stats">
-      <header>Initial</header>
+      <header>Initial - {{session.user.registeredAtDate}}</header>
       <div class="content">
         <div class="stat">
           <div class="value">{{initialCounts.media}}</div>
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="stats current-stats">
-      <header>Current</header>
+      <header>Current - {{now}}</header>
       <div class="content">
         <div class="stat">
           <div class="value">{{currentCounts.media}}</div>

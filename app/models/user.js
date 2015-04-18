@@ -2,27 +2,24 @@ import Ember from "ember";
 import DS from "ember-data";
 
 var alias = Ember.computed.alias;
+var attr = DS.attr;
 
 export default DS.Model.extend({
-  username: DS.attr('string'),
-  bio: DS.attr('string'),
-  website: DS.attr('string'),
-  activeCampaigns: DS.attr('number'),
-  impersonable: DS.attr('boolean'),
+  username: attr('string'),
+  bio: attr('string'),
+  website: attr('string'),
+  activeCampaigns: attr('number'),
+  impersonable: attr('boolean'),
+  createdAt: attr('date'),
+  fullName: attr('string'),
+  registeredAt: attr('date'),
+  isAdmin: attr('boolean'),
+  initialCounts: attr(),
+  currentCounts: attr(),
+  counts: attr(),
+  subscriptionExpiresAt: attr('date'),
+  profilePicture: attr('string'),
 
-  //TODO: Remove this, define adapter property for get proper keys
-  profilePicture: function() {
-    return this.get('profile_picture') || this.get('data.profile_picture');
-  }.property(),
-  created_at: DS.attr('date'),
-  fullName: alias('full_name'),
-  createdAt: alias('created_at'),
-  registeredAt: alias('registered_at'),
-  isAdmin: alias('is_admin'),
-  initialCounts: alias('initial_counts'),
-  currentCounts: alias('current_counts'),
-  subscription_expires_at: DS.attr('date'),
-  subscriptionExpiresAt: alias('subscription_expires_at'),
   isRegistered: Ember.computed.bool('createdAt'),
   isClean: Ember.computed.not('isDirty'),
 
@@ -32,5 +29,9 @@ export default DS.Model.extend({
 
   isExpired: function() {
     return this.get('subscriptionExpiresAt') < new Date();
-  }.property('subscriptionExpiresAt')
+  }.property('subscriptionExpiresAt'),
+
+  registeredAtDate: function() {
+    return moment(this.get('registeredAt')).fromNow();
+  }.property('registeredAt')
 });

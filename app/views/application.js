@@ -15,6 +15,7 @@ export default Ember.View.extend({
       return;
     }
 
+    //Show prompt
     swal({
       title: "Your email is required",
       text: "Please, enter your email address:",
@@ -23,11 +24,13 @@ export default Ember.View.extend({
       closeOnConfirm: false,
       animation: "slide-from-top"
     }, function(email) {
+      //Show error
       if (!isValidEmail(email)) {
         swal.showInputError("The email should be valid");
         return false;
       }
 
+      //Save email
       this.set('userEmail', email);
       this.get('session.user').save();
 

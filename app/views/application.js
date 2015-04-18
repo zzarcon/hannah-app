@@ -11,7 +11,7 @@ export default Ember.View.extend({
   userEmail: Ember.computed.alias('session.user.email'),
 
   showEmailPrompt: function() {
-    if (this.get('userEmail')) {
+    if (!this.get('session.user') || this.get('userEmail')) {
       return;
     }
 

@@ -14,7 +14,12 @@ export default Ember.ArrayController.extend(SortableController, {
   }.property(),
 
   activeCampaigns: function() {
-    return this.get('activeUsers').mapBy('activeCampaigns').reduce(function(prev, current) {
+    var activeUsers = this.get('activeUsers');
+    if (Ember.isEmpty(activeUsers)) {
+      return 0;
+    }
+
+    return activeUsers.mapBy('activeCampaigns').reduce(function(prev, current) {
       return prev + current;
     });
   }.property('impersonableUsers.length'),

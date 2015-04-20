@@ -15,6 +15,9 @@
         Expires in
       {{/sortable-header}}
       <th>
+        Email
+      </th>
+      <th>
         Action
       </th>
       <th>
@@ -29,6 +32,7 @@
         <td>{{user.activeCampaigns}}</td>
         <td>{{user.isExpired}}</td>
         <td>{{date-picker date=user.subscriptionExpiresAt valueFormat='date' format="DD-MM-YYYY"}} : {{user.subscriptionExpiresIn}}</td>
+        <td>{{user.email}}</td>
         <td>
           <a href="{{unbound ENV.host}}/impersonate/{{unbound user.username}}?code=990011">
             <button type="button" class="btn btn-primary">Impersonate</button>

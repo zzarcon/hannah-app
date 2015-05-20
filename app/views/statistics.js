@@ -20,7 +20,9 @@ export default Ember.View.extend({
   }.property(),
 
   data: function() {
-    var stats = this.get('controller').slice(0, this.get('displayStatsLimit'));
+    var length = this.get('controller.length');
+    var init = length - this.get('displayStatsLimit');
+    var stats = this.get('controller').slice(init < 0 ? 0 : init, length);
     var labels = stats.map(function(stat) {
       return moment(stat.get('date')).format('DD/MM/YY');
     });

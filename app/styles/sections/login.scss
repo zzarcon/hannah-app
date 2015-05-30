@@ -8,12 +8,15 @@
   color: #b3b3b3;
 
   .login-wrapper{
+    $height: 280px;
+    $width: 260px;
     @include animation(1.5s slide-down forwards);
-    @include transform(translate(-50%, 0));
     width: 26rem;
     text-align: center;
     position: absolute;
     left: 50%;
+    margin-left: -($width / 2);
+    margin-top: -($height / 2);
 
     a{
       color: white;
@@ -53,7 +56,6 @@
     top: 0;
   }
   100% {
-    @include transform(translate(-50%, -50%));
     opacity: 1;
     top: 50%;
   }

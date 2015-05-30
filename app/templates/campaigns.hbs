@@ -1,27 +1,10 @@
-<div class="campaigns">
-  <table>
-    <caption>
-      Active campaign | {{activeCampaigns.length}} | Available likes | {{availableLikes}} |
-      <span class="glyphicon glyphicon-plus create-campaign active" {{action "createCampaign"}}></span>
-    </caption>
-    <thead>
-      <tr>
-        <th>Action</th>
-        <th>Target</th>
-        <th>Likes</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each campaign in this}}
-        {{partial "partials/campaign"}}
-      {{else}}
-        <tr>
-          <th class="no-campaigns" colspan="6">No active campaigns</th>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+{{#unless firstObject.id}}
+  <h2>No active campaigns</h2>
+{{/unless}}
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">#</span>
+  {{input class="form-control" placeholder="Hashtag..." value=campaign.target autofocus="true"}}
+  <span class="input-group-btn">
+    <button class="save-button btn btn-default" {{bind-attr disabled="cantSaveCampaign"}} {{action "saveCampaign"}}>Save</button>
+  </span>
 </div>

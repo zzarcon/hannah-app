@@ -9,6 +9,7 @@ export default DS.Model.extend({
   updatedAt: DS.attr('date'),
   username: DS.attr('string'),
   likes: DS.attr('number', {defaultValue: config.maximumLikes}),
+  user: DS.belongsTo('user'),
 
   canBeSaved: Ember.computed.and('validTarget', 'action', 'isDirty', 'validLikes'),
   canBeDeleted: Ember.computed.not('isNew'),

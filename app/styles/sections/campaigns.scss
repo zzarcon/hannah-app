@@ -6,7 +6,22 @@
   margin-top: 10px;
 }
 
+#campaigns{
+  h2{
+    text-align: center;
+  }
+  .save-button{
+    @include transition(all 0.5s);
+    &:not([disabled]) {
+      background-color: rgba(#5cb85c, 0.7);
+      color: white;
 
+      &:hover{
+        background-color: #5cb85c;
+      }
+    }
+  }
+}
 .campaigns{
   .create-campaign{
     float: right;

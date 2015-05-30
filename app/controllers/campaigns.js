@@ -12,9 +12,15 @@ export default Ember.ArrayController.extend({
 
   selectedPopularHastag: Ember.computed.defaultTo('popularHashtags.firstObject'),
   selectedAction: Ember.computed.defaultTo('availableActions.firstObject'),
-
   activeCampaigns: Ember.computed.filterBy('@this', 'id'),
   likesExceded: Ember.computed.lt('availableLikes', 0),
+  canSaveCampaign: Ember.computed.and('campaign.isDirty', 'campaign.target'),
+  cantSaveCampaign: Ember.computed.not('canSaveCampaign'),
+
+  campaign: function() {
+    var firstCampaign = this.get('firstObject') ? this.get('firstObject.content') : null;
+    return firstCampaign || this.get('store').createRecord('campaign');
+  }.property(),
 
   availableLikes: function() {
     var likes = this.filterBy('likes').map(function(campaign) {
@@ -35,6 +41,15 @@ export default Ember.ArrayController.extend({
   actions: {
     createCampaign: function() {
       this.get('store').createRecord('campaign');
+    },
+    saveCampaign: function() {
+      var campaign = this.get('campaign');
+
+      campaign.save().then(function() {
+        swal("Success", "Campaing saved", "success");
+      }).catch(function() {
+        sweetAlert("Error", "Error while creating the campaign", "error");
+      });
     }
   }
 });

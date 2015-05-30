@@ -55,7 +55,7 @@
       }
 
       .map{
-        transition: opacity 0.5s;
+        @include transition(opacity 0.5s);
         opacity: 0;
         max-height: 0;
         td{

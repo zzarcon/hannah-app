@@ -14,8 +14,9 @@ export default Ember.ArrayController.extend({
   selectedAction: Ember.computed.defaultTo('availableActions.firstObject'),
   activeCampaigns: Ember.computed.filterBy('@this', 'id'),
   likesExceded: Ember.computed.lt('availableLikes', 0),
-  canSaveCampaign: Ember.computed.and('campaign.isDirty', 'campaign.target'),
+  canSaveCampaign: Ember.computed.and('campaign.isDirty', 'campaign.target', 'isTargetValid'),
   cantSaveCampaign: Ember.computed.not('canSaveCampaign'),
+  isTargetValid: Ember.computed.not('targetContainSpaces'),
 
   campaign: function() {
     var firstCampaign = this.get('firstObject') ? this.get('firstObject.content') : null;
@@ -38,6 +39,12 @@ export default Ember.ArrayController.extend({
     return this.get('maximumLikes') - usedLikes;
   }.property('this.@each.likes', 'maximumLikes'),
 
+  targetContainSpaces: function() {
+    var target = this.get('campaign.target');
+
+    return target.indexOf(' ') !== -1;
+  }.property('campaign.target'),
+
   actions: {
     createCampaign: function() {
       this.get('store').createRecord('campaign');
@@ -50,6 +57,9 @@ export default Ember.ArrayController.extend({
       }).catch(function() {
         sweetAlert("Error", "Error while creating the campaign", "error");
       });
+    },
+    setTarget: function(hashtag) {
+      this.get('campaign').set('target', hashtag);
     }
   }
 });

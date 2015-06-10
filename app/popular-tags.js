@@ -1,9 +1,10 @@
 export default [
+  'playa',
+  'love',
   'dailypic',
   'follow',
   'photooftheday',
   'fun',
-  'love',
   'jj',
   'instadaily',
   'igers',

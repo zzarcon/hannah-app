@@ -19,7 +19,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('dashboard');
-  this.route('campaigns');
+  this.route('campaigns', {path: "get_likes"});
   this.route('statistics');
   this.route('admin');
 });

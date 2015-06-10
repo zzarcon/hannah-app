@@ -10,6 +10,26 @@
   h2{
     text-align: center;
   }
+  h3{
+    .error{
+      color: #a94442;
+    }
+  }
+  .popular-hashtags{
+    text-align: center;
+
+    li{
+      display: inline-block;
+      margin-bottom: 1rem;
+      text-align: center;
+      cursor: pointer;
+      &:hover{
+        color: white;
+        background-color: rgba(#337ab7, 0.7);
+        text-decoration: underline;
+      }
+    }
+  }
   .save-button{
     @include transition(all 0.5s);
     &:not([disabled]) {
@@ -27,7 +47,6 @@
     float: right;
     cursor: pointer;
   }
-
   table{
     @mixin active-row() {
       border-color: black;

@@ -1,6 +1,15 @@
 {{#unless firstObject.id}}
   <h2>No active campaigns</h2>
 {{/unless}}
+<h3>
+  Active hashtag
+{{#if targetContainSpaces}}
+  <span class="error"> - hashtag can't contain spaces</span>
+{{/if}}
+</h3>
+<div class="active-hashtag-description">
+  You can't only have one hashtag at a time
+</div>
 <div class="input-group input-group-lg">
   <span class="input-group-addon" id="basic-addon1">#</span>
   {{input class="form-control" placeholder="Hashtag..." value=campaign.target autofocus="true"}}
@@ -8,3 +17,9 @@
     <button class="save-button btn btn-default" {{bind-attr disabled="cantSaveCampaign"}} {{action "saveCampaign"}}>Save</button>
   </span>
 </div>
+<h3>Our suggested hashtags!!</h3>
+<ul class="popular-hashtags list-group">
+  {{#each tag in popularHashtags}}
+    <li class="list-group-item" {{action "setTarget" tag}}>{{tag}}</li>
+  {{/each}}
+</ul>
